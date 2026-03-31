@@ -1,0 +1,10 @@
+stage,users,metric,rate,rate_pct
+view,9961,view_to_cart,0.7021383395241442,70.21
+view,9961,cart_to_purchase_strict,0.3307120388904775,33.07
+view,9961,view_to_purchase_overall,0.3293845999397651,32.94
+cart,6994,view_to_cart,0.7021383395241442,70.21
+cart,6994,cart_to_purchase_strict,0.3307120388904775,33.07
+cart,6994,view_to_purchase_overall,0.3293845999397651,32.94
+purchase,3281,view_to_cart,0.7021383395241442,70.21
+purchase,3281,cart_to_purchase_strict,0.3307120388904775,33.07
+purchase,3281,view_to_purchase_overall,0.3293845999397651,32.94

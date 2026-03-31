@@ -1,0 +1,4 @@
+metric,rate,rate_pct
+view_to_cart,0.7021383395241442,70.21
+cart_to_purchase_strict,0.33071203889047757,33.07
+view_to_purchase_overall,0.3293845999397651,32.94

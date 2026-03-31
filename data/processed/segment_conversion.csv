@@ -1,0 +1,14 @@
+segment_type,segment_value,cart_users,purchased,cart_to_purchase_conversion,cart_to_purchase_conversion_pct
+gender,Other,2442,794,0.32514332514332517,32.51
+gender,Female,2284,777,0.3401926444833625,34.02
+gender,Male,2268,742,0.3271604938271605,32.72
+primary_cart_category,Clothing,757,244,0.32232496697490093,32.23
+primary_cart_category,Pet Supplies,741,245,0.33063427800269907,33.06
+primary_cart_category,Electronics,729,237,0.32510288065843623,32.51
+primary_cart_category,Beauty,725,244,0.33655172413793105,33.66
+primary_cart_category,Toys,725,248,0.34206896551724136,34.21
+primary_cart_category,Books,698,242,0.3467048710601719,34.67
+primary_cart_category,Automotive,671,207,0.30849478390462,30.85
+primary_cart_category,Groceries,668,225,0.33682634730538924,33.68
+primary_cart_category,Home & Kitchen,665,212,0.318796992481203,31.88
+primary_cart_category,Sports,615,209,0.33983739837398375,33.98

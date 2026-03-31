@@ -1,0 +1,2 @@
+experiment_name,control_variant,treatment_variant,control_conversion_rate,treatment_conversion_rate,lift_abs,lift_abs_pct_points,lift_rel,z_stat,p_value_two_sided
+checkout_optimization,A_control,B_treatment,0.005400795906765207,0.005178365937859608,-0.00022242996890559866,-0.022242996890559866,-0.041184664768941906,-0.1282129972507064,0.8979804146432537

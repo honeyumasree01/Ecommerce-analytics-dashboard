@@ -1,0 +1,108 @@
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+base = Path(r"c:\Users\honey\Downloads\Product_Analysis")
+proc = base / "data" / "processed"
+out = base / "assets" / "screenshots"
+out.mkdir(parents=True, exist_ok=True)
+
+# 1) Funnel chart
+stages = pd.read_csv(proc / "funnel_stages.csv")
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.bar(stages["stage"].str.title(), stages["users"], color=["#4C78A8", "#72B7B2", "#F58518"])
+ax.set_title("Funnel Users by Stage")
+ax.set_ylabel("Users")
+for i, v in enumerate(stages["users"]):
+    ax.text(i, v + 80, f"{int(v):,}", ha="center", fontsize=10)
+fig.tight_layout()
+fig.savefig(out / "funnel_chart.png", dpi=170)
+plt.close(fig)
+
+# 2) Cohort retention curve
+cohort = pd.read_csv(proc / "cohort_retention.csv")
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot(cohort["cohort_month"], cohort["week1_retention_pct"], marker="o", color="#4C78A8")
+ax.set_title("Week-1 Cohort Retention (%)")
+ax.set_ylabel("Retention %")
+ax.set_xlabel("Cohort Month")
+ax.tick_params(axis="x", rotation=45)
+fig.tight_layout()
+fig.savefig(out / "cohort_retention_chart.png", dpi=170)
+plt.close(fig)
+
+# 3) Segment table
+seg = pd.read_csv(proc / "segment_conversion.csv")
+seg = seg[seg["segment_type"] == "primary_cart_category"][
+    ["segment_value", "cart_users", "cart_to_purchase_conversion_pct"]
+].copy()
+seg = seg.sort_values("cart_to_purchase_conversion_pct", ascending=False).head(10)
+rows = []
+for _, r in seg.iterrows():
+    rows.append(
+        [
+            r["segment_value"],
+            f"{int(r['cart_users']):,}",
+            f"{r['cart_to_purchase_conversion_pct']:.2f}%",
+        ]
+    )
+
+fig, ax = plt.subplots(figsize=(10, 4.8))
+ax.axis("off")
+ax.set_title("Top Category Segment Conversion (Cart -> Purchase)", pad=12)
+tbl = ax.table(
+    cellText=rows,
+    colLabels=["Category", "Cart Users", "Conversion %"],
+    loc="center",
+)
+tbl.auto_set_font_size(False)
+tbl.set_fontsize(10)
+tbl.scale(1, 1.45)
+fig.tight_layout()
+fig.savefig(out / "segment_table.png", dpi=170)
+plt.close(fig)
+
+# 4) Dashboard homepage-style composite
+rates = pd.read_csv(proc / "funnel_rates.csv")
+ab = pd.read_csv(proc / "ab_results_summary.csv").iloc[0]
+
+fig = plt.figure(figsize=(12, 7))
+gs = fig.add_gridspec(2, 2)
+ax1 = fig.add_subplot(gs[0, 0])
+ax1.bar(stages["stage"].str.title(), stages["users"], color=["#4C78A8", "#72B7B2", "#F58518"])
+ax1.set_title("Funnel")
+
+ax2 = fig.add_subplot(gs[0, 1])
+ax2.plot(cohort["cohort_month"], cohort["week1_retention_pct"], marker="o", color="#4C78A8")
+ax2.set_title("Cohort Retention %")
+ax2.tick_params(axis="x", rotation=45)
+
+ax3 = fig.add_subplot(gs[1, 0])
+ax3.axis("off")
+key_metrics = "\n".join(
+    [
+        f"{m.replace('_', ' ').title()}: {p:.2f}%"
+        for m, p in zip(rates["metric"], rates["rate_pct"])
+    ]
+)
+ax3.text(0.0, 0.95, "Key Metrics", fontsize=14, weight="bold", va="top")
+ax3.text(0.0, 0.75, key_metrics, fontsize=11, va="top")
+
+ax4 = fig.add_subplot(gs[1, 1])
+ax4.axis("off")
+ax4.text(0.0, 0.95, "A/B Snapshot", fontsize=14, weight="bold", va="top")
+ax4.text(
+    0.0,
+    0.75,
+    f"Lift: {ab['lift_abs_pct_points']:.2f} pp\np-value: {ab['p_value_two_sided']:.3f}",
+    fontsize=11,
+    va="top",
+)
+fig.suptitle("Product Analysis Dashboard Preview", fontsize=16, weight="bold")
+fig.tight_layout(rect=[0, 0, 1, 0.95])
+fig.savefig(out / "dashboard_homepage.png", dpi=170)
+plt.close(fig)
+
+print("Generated screenshots in:", out)
