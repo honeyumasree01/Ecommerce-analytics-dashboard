@@ -116,7 +116,7 @@ Recommendation: Ship an optimized checkout experience that reduces friction and 
 Expected impact: **+3–5% lift** in cart-to-purchase conversion; validate that week-1 retention does not degrade.
 
 ### 2. Prioritize category-specific improvements (Automotive, Home & Kitchen)
-Finding: Lower cart→purchase conversion in **Automotive** and **Home & Kitchen** (~**31%**) compared to higher-performing categories like **Books** (~**35%**).
+Finding: Lower cart→purchase conversion in Automotive and Home & Kitchen (~31%) compared to higher-performing categories like Books (~35%).
 
 Recommendation: Apply targeted improvements for these categories:
 - Stronger trust signals (reviews/guarantees)
