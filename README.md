@@ -19,7 +19,7 @@ Product_Analysis/
 
 ## Data
 
-Place source extracts in `data/raw/`. Write curated outputs to `data/processed/`.
+Place source extracts in `data/raw/`. Store processed outputs in `data/processed/`.
 
 ## Funnel analysis (Step 7)
 
@@ -100,7 +100,7 @@ Because the dataset does not include real randomized experiment assignment, the 
 
 Note: this 7-day attribution window is extremely strict for this dataset (purchase often occurs long after the first cart event), so conversion values are low and the experiment has limited statistical power. In a real product dataset, align the attribution window with purchase latency and instrument event timing reliably.
 
-## Recommendations (Step 11) — Portfolio-ready
+## Recommendations (Step 11)
 
 ### Objective
 Improve **activation** (purchase within 24 hours of the user’s first event) and **week-1 retention** by addressing the primary funnel bottleneck and strengthening post-purchase engagement.
@@ -116,7 +116,7 @@ Recommendation: Ship an optimized checkout experience that reduces friction and 
 Expected impact: **+3–5% lift** in cart-to-purchase conversion; validate that week-1 retention does not degrade.
 
 ### 2. Prioritize category-specific improvements (Automotive, Home & Kitchen)
-Finding: Lower cart→purchase conversion in **Automotive** and **Home & Kitchen** (~**31%**) vs higher-performing categories like **Books** (~**35%**).
+Finding: Lower cart→purchase conversion in **Automotive** and **Home & Kitchen** (~**31%**) compared to higher-performing categories like **Books** (~**35%**).
 
 Recommendation: Apply targeted improvements for these categories:
 - Stronger trust signals (reviews/guarantees)
